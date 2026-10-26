@@ -11,6 +11,7 @@ import configparser
 import json
 import mimetypes
 import os
+import platform
 import shutil
 import subprocess
 from pathlib import Path
@@ -27,19 +28,22 @@ client = OpenAI(
 MODEL = cfg["llm"]["model"]
 
 
-# ---------- 原来的两个工具 ----------
+# ---------- 原有的两个工具 ----------
 
 def get_date():
-    """调用本地 date / time 命令取当前日期时间。
+    """调用本地 date 命令取当前日期时间。
 
-    Windows 下 date 不带 /t 会进入"输入新日期"的交互提示并卡住，所以用 /t 只显示。
+    Windows 下 date 不带 /t 会进入"输入新日期"的交互提示并卡住，所以用 /t 只显示；
+    同时用 time /t 取时间。Linux / macOS 直接用 date 命令。
     """
-    raw = subprocess.run("date /t & time /t", shell=True, capture_output=True).stdout
-    try:
-        text = raw.decode("utf-8")
-    except UnicodeDecodeError:
-        text = raw.decode("gbk", errors="replace")
-    return " ".join(text.split())  # 两行合成一行：2026/10/19 周一 10:32
+    command = "date /t & time /t" if platform.system() == "Windows" else "date"
+    raw = subprocess.run(command, shell=True, capture_output=True).stdout
+    for encoding in ("utf-8", "gbk"):
+        try:
+            return " ".join(raw.decode(encoding).split())
+        except UnicodeDecodeError:
+            continue
+    return " ".join(raw.decode("utf-8", errors="replace").split())
 
 
 def is_leap_year(year):
@@ -50,14 +54,16 @@ def is_leap_year(year):
     return f"{year} 年不是闰年"
 
 
-# ---------- 文件操作工具 ----------
+# ---------- 本地文件操作工具 ----------
 
-def read_text(p):
-    """按 utf-8 / gbk 依次尝试解码，都失败说明不是纯文本。"""
-    raw = Path(p).read_bytes()
-    for enc in ("utf-8", "gbk"):
+def read_text(path):
+    """读取纯文本文件，依次尝试 utf-8 / gbk 解码。"""
+    raw = Path(path).read_bytes()
+    if b"\x00" in raw:
+        raise ValueError("不是纯文本文件")
+    for encoding in ("utf-8-sig", "gbk"):
         try:
-            return raw.decode(enc)
+            return raw.decode(encoding)
         except UnicodeDecodeError:
             continue
     raise ValueError("不是纯文本文件")
@@ -68,28 +74,38 @@ def get_cwd():
 
 
 def list_dir(path):
-    p = Path(path)
+    p = Path(path).expanduser()
     if not p.is_dir():
         return f"目录不存在: {path}"
     items = sorted(p.iterdir(), key=lambda x: (x.is_file(), x.name.lower()))
     if not items:
         return f"{p} 是空目录"
-    lines = [f"[目录] {i.name}" if i.is_dir() else f"[文件] {i.name}" for i in items]
+    lines = []
+    for item in items:
+        if item.is_dir():
+            lines.append(f"[目录] {item.name}")
+        else:
+            lines.append(f"[文件] {item.name}（{item.stat().st_size} 字节）")
     return f"{p} 共 {len(items)} 项:\n" + "\n".join(lines)
 
 
 def get_file_type(path):
-    p = Path(path)
+    p = Path(path).expanduser()
     if not p.exists():
         return f"路径不存在: {path}"
     if p.is_dir():
         return f"{path} 是目录，不是文件"
-    mime, _ = mimetypes.guess_type(p)
-    return f"文件: {p.name}\n扩展名: {p.suffix or '(无)'}\nMIME: {mime or '(未知)'}"
+    mime, encoding = mimetypes.guess_type(p.name)
+    return (
+        f"文件: {p.name}\n"
+        f"扩展名: {p.suffix or '(无)'}\n"
+        f"MIME: {mime or '(未知)'}\n"
+        f"编码: {encoding or '(未知)'}"
+    )
 
 
 def read_file(path):
-    p = Path(path)
+    p = Path(path).expanduser()
     if not p.is_file():
         return f"文件不存在: {path}"
     try:
@@ -102,57 +118,88 @@ def read_file(path):
 
 
 def create_file(dir_path, filename, content=""):
-    p = Path(dir_path) / filename
+    name = Path(filename)
+    if not filename or name.name != filename:
+        return f"文件名不合法: {filename}"
+    p = Path(dir_path).expanduser() / filename
     if p.exists():
         return f"文件已存在，未创建: {p}"
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(content, encoding="utf-8")
+    try:
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(content, encoding="utf-8")
+    except OSError as e:
+        return f"创建失败: {e}"
     return f"已创建文件: {p}（{len(content)} 字符）"
 
 
 def edit_file(path, content):
-    p = Path(path)
+    p = Path(path).expanduser()
     if not p.is_file():
         return f"文件不存在: {path}"
     try:
         read_text(p)
     except ValueError:
         return f"不是纯文本文件，拒绝写入: {path}"
-    p.write_text(content, encoding="utf-8")
+    try:
+        p.write_text(content, encoding="utf-8")
+    except OSError as e:
+        return f"写入失败: {e}"
     return f"已写入: {p}（原有内容已被覆盖，{len(content)} 字符）"
 
 
 def create_dir(path):
-    p = Path(path)
+    p = Path(path).expanduser()
+    if p.is_dir():
+        return f"目录已存在: {p}"
     if p.exists():
-        return f"已存在: {p}"
-    p.mkdir(parents=True)
+        return f"路径已存在且不是目录: {p}"
+    try:
+        p.mkdir(parents=True)
+    except OSError as e:
+        return f"创建目录失败: {e}"
     return f"已创建目录: {p}"
 
 
 def delete_dir(path):
-    p = Path(path)
-    if not p.is_dir():
+    p = Path(path).expanduser()
+    if not p.exists():
         return f"目录不存在: {path}"
-    shutil.rmtree(p)
+    if not p.is_dir():
+        return f"不是目录，拒绝删除: {path}"
+    if p.resolve() == Path(p.anchor):
+        return f"拒绝删除根目录: {p}"
+    try:
+        shutil.rmtree(p)
+    except OSError as e:
+        return f"删除目录失败: {e}"
     return f"已删除目录及其全部内容: {p}"
 
 
 def delete_file(path):
-    p = Path(path)
-    if not p.is_file():
+    p = Path(path).expanduser()
+    if not p.exists():
         return f"文件不存在: {path}"
-    p.unlink()
+    if not p.is_file():
+        return f"不是文件，拒绝删除: {path}"
+    try:
+        p.unlink()
+    except OSError as e:
+        return f"删除文件失败: {e}"
     return f"已删除文件: {p}"
 
 
 def rename_path(old, new):
-    o, n = Path(old), Path(new)
+    o = Path(old).expanduser()
+    n = Path(new).expanduser()
     if not o.exists():
         return f"源路径不存在: {old}"
     if n.exists():
         return f"目标已存在，未重命名: {new}"
-    o.rename(n)
+    try:
+        n.parent.mkdir(parents=True, exist_ok=True)
+        o.rename(n)
+    except OSError as e:
+        return f"重命名失败: {e}"
     return f"已重命名: {o} -> {n}"
 
 
@@ -207,7 +254,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "getFileType",
-            "description": "获取指定文件的文件类型，返回扩展名和 MIME 类型。",
+            "description": "获取指定文件的文件类型，返回扩展名、MIME 类型和文本编码。",
             "parameters": {
                 "type": "object",
                 "properties": {

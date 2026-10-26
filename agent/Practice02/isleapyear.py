@@ -1,5 +1,7 @@
 """带 getDate / isLeapYear 工具的流式循环对话：python isleapyear.py
 
+工具: getDate（调用本地 date 命令获取当前日期时间）
+      isLeapYear（用 Python 判断年份是否为闰年）
 依赖: pip install openai
 配置: 同目录下 config.ini 的 [llm] 段（base_url / api_key / model）
 退出: Ctrl+C
@@ -7,6 +9,7 @@
 
 import configparser
 import json
+import platform
 import subprocess
 from pathlib import Path
 
@@ -23,16 +26,19 @@ MODEL = cfg["llm"]["model"]
 
 
 def get_date():
-    """调用本地 date / time 命令取当前日期时间。
+    """调用本地 date 命令取当前日期时间。
 
-    Windows 下 date 不带 /t 会进入"输入新日期"的交互提示并卡住，所以用 /t 只显示。
+    Windows 下 date 不带 /t 会进入"输入新日期"的交互提示并卡住，所以用 /t 只显示；
+    同时用 time /t 取时间。Linux / macOS 直接用 date 命令。
     """
-    raw = subprocess.run("date /t & time /t", shell=True, capture_output=True).stdout
-    try:
-        text = raw.decode("utf-8")
-    except UnicodeDecodeError:
-        text = raw.decode("gbk", errors="replace")
-    return " ".join(text.split())  # 两行合成一行：2026/10/19 周一 10:32
+    command = "date /t & time /t" if platform.system() == "Windows" else "date"
+    raw = subprocess.run(command, shell=True, capture_output=True).stdout
+    for encoding in ("utf-8", "gbk"):
+        try:
+            return " ".join(raw.decode(encoding).split())
+        except UnicodeDecodeError:
+            continue
+    return " ".join(raw.decode("utf-8", errors="replace").split())
 
 
 def is_leap_year(year):
