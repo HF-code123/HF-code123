@@ -1,0 +1,78 @@
+Screen {
+    background: #1a1b26;
+    color: #c0caf5;
+}
+
+Header {
+    background: #16161e;
+    color: #c0caf5;
+}
+
+Footer {
+    background: #16161e;
+    color: #565f89;
+}
+
+#chat {
+    padding: 1 2;
+    background: #1a1b26;
+}
+
+Markdown {
+    background: transparent;
+}
+
+.message {
+    margin: 1 0;
+    padding: 0 1;
+}
+
+.user-message {
+    background: #24283b;
+    border-left: thick #7aa2f7;
+    margin-left: 8;
+}
+
+.assistant-message {
+    background: #1f2335;
+    border-left: thick #9ece6a;
+    margin-right: 8;
+}
+
+.tool-message {
+    background: #1b1e2b;
+    border-left: thick #e0af68;
+    color: #a9b1d6;
+    margin: 0 2;
+}
+
+.error-message {
+    background: #2a1b22;
+    border-left: thick #f7768e;
+    color: #f7768e;
+    margin-right: 8;
+}
+
+.notice-message {
+    background: #16161e;
+    color: #565f89;
+    margin: 0 2;
+}
+
+#prompt {
+    height: 3;
+    margin: 1 2;
+    padding: 0 1;
+    border: tall #7aa2f7;
+    background: #24283b;
+    color: #c0caf5;
+}
+
+#prompt:focus {
+    border: tall #9ece6a;
+}
+
+#prompt:disabled {
+    border: tall #3b4261;
+    color: #565f89;
+}

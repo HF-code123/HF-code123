@@ -1,0 +1,109 @@
+flowchart TB
+    subgraph ENTRY["入口与配置"]
+        START(["启动: python fileops.py"])
+        CFG["读取同目录 config.ini<br/>[llm] base_url / api_key / model"]
+        CLIENT["创建 OpenAI 客户端"]
+        MSG["messages = []<br/>保存多轮上下文"]
+        START --> CFG --> CLIENT --> MSG
+    end
+
+    subgraph LOOP["对话主循环"]
+        INPUT["input 读取用户 prompt"]
+        USER["追加 role=user 消息"]
+        API["chat.completions.create<br/>model + messages + TOOLS + stream=True"]
+        STREAM["解析流式响应"]
+        CONTENT["拼接 delta.content<br/>实时打印"]
+        CALLS["拼接 delta.tool_calls<br/>按 index 合并 id / name / arguments"]
+        DECIDE{"是否有工具调用?"}
+        FINAL["追加 role=assistant 最终回答"]
+        ASSIST["追加 role=assistant<br/>content + tool_calls"]
+        EXEC["遍历工具调用<br/>json.loads(arguments)"]
+        RESULT["追加 role=tool 消息<br/>tool_call_id + 执行结果"]
+        INPUT --> USER --> API --> STREAM
+        STREAM --> CONTENT --> DECIDE
+        STREAM --> CALLS --> DECIDE
+        DECIDE -->|"否"| FINAL
+        DECIDE -->|"是"| ASSIST --> EXEC --> RESULT --> API
+    end
+    MSG --> INPUT
+    FINAL --> INPUT
+
+    EOF(["Ctrl+C / EOF"]) 
+    INPUT -.-> EOF
+
+    subgraph DISPATCH["工具分发"]
+        RUN["run_tool(name, arguments)"]
+    end
+    EXEC --> RUN
+
+    subgraph TOOLS["工具声明 TOOLS 与实现函数"]
+        direction TB
+        subgraph TC["时间 / 计算"]
+            T1["getDate"] --> F1["get_date()"]
+            T2["isLeapYear(year)"] --> F2["is_leap_year(year)"]
+        end
+        subgraph QUERY["目录 / 文件查询"]
+            T3["getCwd"] --> F3["get_cwd()"]
+            T4["listDir(path)"] --> F4["list_dir(path)"]
+            T5["getFileType(path)"] --> F5["get_file_type(path)"]
+            T6["readFile(path)"] --> F6["read_file(path)"]
+            F6 --> F6A["read_text(path)<br/>纯文本校验"]
+        end
+        subgraph WRITE["文件写入"]
+            T7["createFile(dir, filename, content)"] --> F7["create_file(...)"]
+            T8["editFile(path, content)"] --> F8["edit_file(...)"]
+            F8 --> F8A["read_text 校验纯文本"]
+        end
+        subgraph MANAGE["目录 / 路径管理"]
+            T9["createDir(path)"] --> F9["create_dir(path)"]
+            T10["deleteDir(path)"] --> F10["delete_dir(path)"]
+            T11["deleteFile(path)"] --> F11["delete_file(path)"]
+            T12["renamePath(old, new)"] --> F12["rename_path(old, new)"]
+        end
+    end
+
+    RUN --> T1
+    RUN --> T2
+    RUN --> T3
+    RUN --> T4
+    RUN --> T5
+    RUN --> T6
+    RUN --> T7
+    RUN --> T8
+    RUN --> T9
+    RUN --> T10
+    RUN --> T11
+    RUN --> T12
+
+    subgraph LOCAL["本地系统 / 文件系统"]
+        L1["subprocess<br/>date /t &amp; time /t"]
+        L2["Python 运算"]
+        L3["os.getcwd()"]
+        L4["pathlib.Path<br/>iterdir / stat / read_bytes / write_text<br/>mkdir / unlink / rename"]
+        L5["mimetypes.guess_type"]
+        L6["shutil.rmtree"]
+    end
+
+    F1 --> L1
+    F2 --> L2
+    F3 --> L3
+    F4 --> L4
+    F5 --> L5
+    F6A --> L4
+    F7 --> L4
+    F8A --> L4
+    F9 --> L4
+    F10 --> L6
+    F11 --> L4
+    F12 --> L4
+
+    classDef entry fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
+    classDef loop fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
+    classDef tool fill:#f3e5f5,stroke:#6a1b9a,color:#4a148c
+    classDef system fill:#eceff1,stroke:#455a64,color:#263238
+
+    class START,CFG,CLIENT,MSG entry
+    class INPUT,USER,API,STREAM,CONTENT,CALLS,DECIDE,FINAL,ASSIST,EXEC,RESULT,RUN loop
+    class T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 tool
+    class F1,F2,F3,F4,F5,F6,F6A,F7,F8,F8A,F9,F10,F11,F12 tool
+    class L1,L2,L3,L4,L5,L6 system
