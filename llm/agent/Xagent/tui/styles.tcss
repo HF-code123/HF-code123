@@ -1,0 +1,264 @@
+Screen {
+    background: #1a1b26;
+    color: #c0caf5;
+}
+
+Header {
+    background: #16161e;
+    color: #c0caf5;
+}
+
+Footer {
+    background: #16161e;
+    color: #565f89;
+}
+
+/* ---------- 主布局：左聊天区 + 右侧信息栏 ---------- */
+
+#main {
+    height: 1fr;
+}
+
+#content {
+    width: 1fr;
+}
+
+#sidebar {
+    width: 42;
+    min-width: 42;
+    border-left: tall #3b4261;
+    background: #16161e;
+    padding: 1 1;
+    overflow-y: auto;
+    scrollbar-background: #16161e;
+    scrollbar-color: #3b4261;
+    scrollbar-size: 1 1;
+}
+
+#sidebar > #sidebar-body {
+    width: 1fr;
+    background: transparent;
+}
+
+/* ---------- 输入框下方命令栏 ---------- */
+
+#command-bar {
+    height: auto;
+    margin: 0 2;
+    padding: 0 1;
+    background: #16161e;
+    border-top: tall #3b4261;
+}
+
+#chat {
+    height: 1fr;
+    padding: 0 2 1 2;
+    background: #1a1b26;
+}
+
+Markdown {
+    background: transparent;
+}
+
+/* ---------- 消息块 ---------- */
+
+.message {
+    margin: 1 0;
+    padding: 0 1;
+}
+
+.user-message {
+    background: #1f2335;
+    border-left: thick #e0af68;
+}
+
+.assistant-message {
+    height: auto;
+    background: transparent;
+    border-left: thick #7aa2f7;
+    margin-right: 8;
+}
+
+.assistant-label {
+    color: #7aa2f7;
+    text-style: bold;
+}
+
+.assistant-body {
+    background: transparent;
+}
+
+/* ---------- 工具调用卡片 ---------- */
+
+.tool-message {
+    height: auto;
+    background: #1b1e2b;
+    border-left: thick #9ece6a;
+    margin: 1 0;
+    padding: 0 1;
+}
+
+.tool-header {
+    color: #9ece6a;
+}
+
+.tool-params {
+    margin-top: 1;
+    margin-left: 2;
+    color: #a9b1d6;
+}
+
+.tool-result {
+    margin-top: 1;
+    margin-left: 2;
+    border-left: thick #7aa2f7;
+    padding-left: 1;
+    color: #c0caf5;
+}
+
+.error-message {
+    background: #2a1b22;
+    border-left: thick #f7768e;
+    color: #f7768e;
+    margin-right: 8;
+}
+
+.notice-message {
+    background: #16161e;
+    color: #565f89;
+    margin: 0 2;
+}
+
+/* ---------- 输入框 ---------- */
+
+#prompt {
+    height: 3;
+    margin: 0 2;
+    padding: 0 1;
+    border: tall #3b4261;
+    background: #16161e;
+    color: #c0caf5;
+}
+
+#prompt:focus {
+    border: tall #7aa2f7;
+}
+
+#prompt:disabled {
+    border: tall #3b4261;
+    color: #565f89;
+}
+
+/* ---------- 状态行 ---------- */
+
+#status-line {
+    height: 1;
+    margin: 0 2;
+    padding: 0 1;
+    color: #565f89;
+    background: #16161e;
+}
+
+/* ---------- 命令补全面板 ---------- */
+
+.hidden {
+    display: none;
+}
+
+#command-hint {
+    height: auto;
+    max-height: 12;
+    margin: 0 2;
+    border: tall #e0af68;
+    background: #1f2335;
+    scrollbar-size: 0 0;
+}
+
+/* ---------- 历史会话选择面板 ---------- */
+
+#sessions-panel {
+    width: 70%;
+    max-width: 90;
+    height: auto;
+    max-height: 70%;
+    background: #1f2335;
+    border: thick #7aa2f7;
+    padding: 1 2;
+}
+
+#sessions-title {
+    color: #7aa2f7;
+    margin-bottom: 1;
+}
+
+#sessions-list {
+    height: auto;
+    max-height: 16;
+    background: #16161e;
+}
+
+/* ---------- 首次运行对话框 ---------- */
+
+#first-run {
+    width: 70%;
+    max-width: 80;
+    height: auto;
+    background: #1f2335;
+    border: thick #e0af68;
+    padding: 1 2;
+    align-horizontal: center;
+}
+
+#first-run-text {
+    color: #c0caf5;
+    margin-bottom: 1;
+}
+
+#first-run-close {
+    width: auto;
+}
+
+/* ---------- /compact 结果对照面板 ---------- */
+
+#compact-panel {
+    width: 90%;
+    max-width: 120;
+    height: 85%;
+    background: #1f2335;
+    border: thick #7aa2f7;
+    padding: 1 2;
+    align-horizontal: center;
+}
+
+#compact-header {
+    height: auto;
+    color: #9ece6a;
+    margin-bottom: 1;
+}
+
+#compact-body {
+    height: 1fr;
+}
+
+#compact-original {
+    width: 1fr;
+    border-right: tall #3b4261;
+    margin-right: 1;
+    padding: 0 1;
+    background: #1a1b26;
+}
+
+#compact-original Static {
+    color: #a9b1d6;
+}
+
+#compact-summary {
+    width: 1fr;
+    padding: 0 1;
+    background: #16161e;
+}
+
+#compact-close {
+    margin-top: 1;
+    width: auto;
+}

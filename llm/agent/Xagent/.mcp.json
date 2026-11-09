@@ -1,0 +1,28 @@
+{
+  "autoStart": [
+    {
+      "name": "pethospital-api",
+      "command": "D:\\llms\\windows\\pethospital.exe",
+      "cwd": "D:\\llms\\windows",
+      "port": 8080
+    },
+    {
+      "name": "pethospital-mcp",
+      "command": "D:\\llms\\llm\\pet-hospital-mcp第一次\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "pet_hospital_mcp"],
+      "cwd": "D:\\llms\\llm\\pet-hospital-mcp第一次",
+      "env": {"MCP_PORT": "8090"},
+      "port": 8090
+    }
+  ],
+  "mcpServers": {
+    "pethospital": {
+      "type": "streamable_http",
+      "url": "http://127.0.0.1:8090/mcp"
+    },
+    "Bazi": {
+      "command": "npx",
+      "args": ["bazi-mcp"]
+    }
+  }
+}
