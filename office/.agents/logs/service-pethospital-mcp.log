@@ -1,0 +1,137 @@
+INFO:     Started server process [42756]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T04:51:21Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50950 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:51:22Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:50950 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T04:51:22Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:50952 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:51:22Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:50954 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:50954 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"httpx","params":{},"status":"info","duration_ms":0,"message":"HTTP Request: GET http://127.0.0.1:8080/api/v1/pets?page=1&pageSize=1 \"HTTP/1.1 200 OK\""}
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"list_pets","params":{"page":1,"pageSize":1},"status":"success","duration_ms":0,"message":"list_pets completed"}
+INFO:     127.0.0.1:50955 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:50955 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:51:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [44064]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T04:52:18Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51200 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:52:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:51200 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T04:52:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:51201 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T04:52:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [37320]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T05:10:25Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51579 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:10:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:51579 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T05:10:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:51580 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:10:26Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [38608]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T05:23:30Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52906 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:23:30Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:52906 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T05:23:30Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:52907 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:23:30Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [12056]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T05:41:17Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54882 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:41:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:54882 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T05:41:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:54883 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:41:18Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [14236]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T05:52:33Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55832 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:52:33Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:55832 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T05:52:33Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:55833 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T05:52:33Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     Started server process [29148]
+INFO:     Waiting for application startup.
+{"timestamp":"2026-11-05T08:01:43Z","tool_name":"mcp.server.streamable_http_manager","params":{},"status":"info","duration_ms":0,"message":"StreamableHTTP session manager started"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56123 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T08:01:44Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:56123 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T08:01:44Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:56124 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T08:01:44Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:53708 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T14:07:45Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:53708 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-05T14:07:45Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:53709 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-05T14:07:45Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:55448 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T01:22:01Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:55448 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T01:22:01Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:55449 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T01:22:01Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:56584 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T01:40:52Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:56584 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T01:40:52Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:56585 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T01:40:52Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59245 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:09:09Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59245 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T03:09:09Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59246 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:09:09Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59479 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:25Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59479 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T03:15:25Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59480 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:25Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59489 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59489 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"httpx","params":{},"status":"info","duration_ms":0,"message":"HTTP Request: GET http://127.0.0.1:8080/api/v1/pets?q=%E8%8D%AF%E5%93%81&page=1&pageSize=50 \"HTTP/1.1 200 OK\""}
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"list_pets","params":{"q":"ҩƷ","page":1,"pageSize":50},"status":"success","duration_ms":0,"message":"list_pets completed"}
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:39Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59492 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59492 - "POST /mcp HTTP/1.1" 202 Accepted
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"httpx","params":{},"status":"info","duration_ms":0,"message":"HTTP Request: GET http://127.0.0.1:8080/api/v1/pets?page=1&pageSize=50 \"HTTP/1.1 200 OK\""}
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"list_pets","params":{"page":1,"pageSize":50},"status":"success","duration_ms":0,"message":"list_pets completed"}
+INFO:     127.0.0.1:59493 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}
+INFO:     127.0.0.1:59493 - "POST /mcp HTTP/1.1" 200 OK
+{"timestamp":"2026-11-06T03:15:41Z","tool_name":"mcp.server.streamable_http","params":{},"status":"info","duration_ms":0,"message":"Terminating session: None"}

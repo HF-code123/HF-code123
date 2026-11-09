@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "skills": {
+    "healthfit-cn": {
+      "name": "healthfit-cn",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    },
+    "health-report": {
+      "name": "health-report",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    },
+    "health-score-pro": {
+      "name": "health-score-pro",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    },
+    "health-checkup-report": {
+      "name": "health-checkup-report",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    },
+    "personal-health-journal": {
+      "name": "personal-health-journal",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    },
+    "health-manager": {
+      "name": "health-manager",
+      "source": "pack:healthcare-health-report",
+      "version": "",
+      "installedAt": "2026-11-09T02:16:05Z"
+    }
+  },
+  "packs": {
+    "healthcare-health-report": {
+      "displayName": "健康报告",
+      "version": "",
+      "skillSlugs": [
+        "healthfit-cn",
+        "health-report",
+        "health-score-pro",
+        "health-checkup-report",
+        "personal-health-journal",
+        "health-manager"
+      ],
+      "installedAt": "2026-11-09T02:16:05Z"
+    }
+  }
+}
